@@ -29,7 +29,7 @@
 }
 .btn{
     background-color: #007bff;
-    border-radius: 6px;
+    border-radius: 1px;
 }
 .btn:hover {
     background-color: #005fcc;
