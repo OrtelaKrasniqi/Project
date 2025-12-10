@@ -23,8 +23,10 @@
     text-decoration: none;
 
 }
-.navbar ul li a button{
+.navbar ul li button{
     background-color: aliceblue;
-    color: black;
     border-radius: 0cap;
+}
+.navbar ul li a button a{
+    color: black;
 }
