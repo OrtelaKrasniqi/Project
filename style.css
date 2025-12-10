@@ -21,12 +21,14 @@
     padding: 14px 16px;
     color: white;
     text-decoration: none;
-
 }
-.navbar ul li button{
-    background-color: aliceblue;
-    border-radius: 0cap;
+.navbar ul li a:hover {
+    background-color: #555;
 }
-.navbar ul li a button a{
-    color: black;
+.btn{
+    background-color: #007bff;
+    border-radius: 6px;
+}
+.btn:hover {
+    background-color: #005fcc;
 }
