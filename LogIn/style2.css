@@ -15,7 +15,7 @@ body{
     height: 70vh;
 }
 .form-box{
-    background-color: white;
+    background-color: #9bc4f9;
     padding: 25px;
     border-radius: 10px;
     width: 300px;
@@ -32,7 +32,7 @@ body{
 .btn{
     padding: 10px ;
     background:#4a6cf7 ;
-    color: white;
+    color: rgb(104, 174, 243);
     border: none;
     cursor: pointer;
     border-radius: 5px;
