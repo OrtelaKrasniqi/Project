@@ -59,3 +59,41 @@ ul li a:hover{
   color: #357ABD;
 
 }
+.content{
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    color: white;
+    position: relative;
+}
+.content .par{
+    padding-left: 20px;
+    padding-bottom: 25px;
+    line-height: 30px;
+
+}
+.content h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+    padding-left: 20px;
+    margin-top: 20%;
+
+}
+.content .btn{
+    width: 160px;
+    height: 40px;
+    background: green;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.content .btn a{
+    text-decoration: none;
+    color: white;
+}
+.btn:hover{
+    background-color: #357ABD;
+}
