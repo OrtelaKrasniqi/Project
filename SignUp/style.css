@@ -104,7 +104,7 @@ nav a:hover {
         margin-bottom: 10px;
     }
 }
-/* Body dhe layout */
+
 body {
     display: flex;
     flex-direction: column;
@@ -113,7 +113,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Main merr hapësirën e mbetur midis nav dhe footer */
+
 main {
     flex: 1;
     display: flex;
@@ -122,7 +122,7 @@ main {
     padding: 20px;
 }
 
-/* Navbar */
+
 nav {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.2);

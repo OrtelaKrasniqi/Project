@@ -1,20 +1,21 @@
-body{
+body {
     background-image: url("../faqja_kryesore.webp");
     background-size: cover;
     background-position: center;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
 }
-.center-form{
+
+.center-form {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    flex: 1;
 }
-.form-box{
+
+.form-box {
     background-color: #9bc4f9;
     padding: 25px;
     border-radius: 10px;
@@ -24,20 +25,46 @@ body{
     gap: 15px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
-.form-box input{
+
+.form-box input {
     padding: 10px;
     border: 1px solid #aaa;
     border-radius: 5px;
 }
-.btn{
-    padding: 10px ;
-    background:#4a6cf7 ;
+
+.btn {
+    padding: 10px;
+    background: #4a6cf7;
     color: rgb(104, 174, 243);
     border: none;
     cursor: pointer;
     border-radius: 5px;
 }
-.btn:hover{
-    background:#4a6cf7 ;
 
+.btn:hover {
+    background: #4a6cf7;
+}
+
+.footer {
+    background-color: #357ABD;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.footer .footer-links a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer .footer-links a:hover {
+    color: #ffeb3b;
+}
+
+.footer .footer-copy {
+    margin-top: 10px;
+    font-size: 14px;
 }
