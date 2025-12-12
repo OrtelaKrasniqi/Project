@@ -60,24 +60,26 @@ ul li a:hover{
 
 }
 .content{
-    width: 1200px;
-    height: auto;
-    margin: auto;
+ height: calc(100vh - 75px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;     
+    text-align: center;
     color: white;
-    position: relative;
 }
+
+    
 .content .par{
-    padding-left: 20px;
+      padding-left: 0;
     padding-bottom: 25px;
     line-height: 30px;
 
 }
 .content h1{
-    font-family: 'Times New Roman', Times, serif;
+     font-family: 'Times New Roman', Times, serif;
     font-size: 50px;
-    padding-left: 20px;
-    margin-top: 20%;
-
+    margin-top: 0;
 }
 .content .btn{
     width: 160px;
