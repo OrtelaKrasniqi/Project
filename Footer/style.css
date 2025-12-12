@@ -1,4 +1,4 @@
-/* Body dhe layout */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -9,7 +9,7 @@ body {
     min-height: 100vh;
 }
 
-/* Navbar */
+
 nav {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.2);
@@ -33,7 +33,7 @@ nav a:hover {
     color: #ffeb3b;
 }
 
-/* Sign Up Form */
+
 .signup-container {
     background-color: #ffffff;
     padding: 40px 30px;
@@ -88,7 +88,7 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* Footer */
+
 footer {
     background-color: #357ABD;
     color: #fff;
@@ -108,7 +108,7 @@ footer .footer-links a:hover {
     color: #ffeb3b;
 }
 
-/* Responsive */
+
 @media screen and (max-width: 500px) {
     .signup-container {
         padding: 30px 20px;
