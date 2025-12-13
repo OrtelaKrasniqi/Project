@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-body{
-    background-image: url("techrec.avif");
-=======
-body {
-    background-image: url("../faqja_kryesore.webp");
->>>>>>> b0e14464fb9a02dbd79c92f24da6355eb65479da
-    background-size: cover;
+body{ 
+     background-size: cover;
     background-position: center;
     display: flex;
     flex-direction: column;
@@ -19,14 +13,8 @@ body {
     align-items: center;
     flex: 1;
 }
-<<<<<<< HEAD
 .form-box{
     background-color: lightgray;
-=======
-
-.form-box {
-    background-color: #9bc4f9;
->>>>>>> b0e14464fb9a02dbd79c92f24da6355eb65479da
     padding: 25px;
     border-radius: 10px;
     width: 300px;
