@@ -1,5 +1,5 @@
 body{
-    background-image: url("../faqja_kryesore.webp");
+    background-image: url("techrec.avif");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -15,7 +15,7 @@ body{
     height: 70vh;
 }
 .form-box{
-    background-color: white;
+    background-color: lightgray;
     padding: 25px;
     border-radius: 10px;
     width: 300px;

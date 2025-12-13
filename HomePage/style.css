@@ -6,7 +6,7 @@
 
 .main{
     width: 100%;
-    background-image: url(logo.jpg);
+    background-image: url(techrec.avif);
     background-position: center;
     background-size: cover;
     height: 109vh;
@@ -23,7 +23,7 @@
     height: 70px;
 }
 .logo{
-    color: green;
+    color: white;
     font-size: 35px;
     font-family: Arial, Helvetica, sans-serif;
     padding-left: 20px;
@@ -84,7 +84,7 @@ ul li a:hover{
 .content .btn{
     width: 160px;
     height: 40px;
-    background: green;
+    background: #357ABD;
     border: none;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -97,5 +97,5 @@ ul li a:hover{
     color: white;
 }
 .btn:hover{
-    background-color: #357ABD;
+    background-color: green;
 }
