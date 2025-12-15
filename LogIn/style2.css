@@ -1,4 +1,5 @@
 body{ 
+    background-image: url(techrec.avif);
      background-size: cover;
     background-position: center;
     display: flex;
