@@ -1,60 +1,61 @@
-body{ 
-    background-image: url(22.jpg);
-     background-size: cover;
+body{
+    background-image: url("22.jpg"); 
+    background-size: cover;
     background-position: center;
-    display: flex;
-    flex-direction: column;
     min-height: 100vh;
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-.login-container {
-    background-color: #ffffff;
-    padding: 40px 30px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    width: 100%;
-    max-width: 400px;
+.center-form{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-box{
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px 35px;
+    width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
     text-align: center;
 }
 
-.login-container h2 {
+.form-box h2{
+    margin-bottom: 20px;
     color: #357ABD;
-    margin-bottom: 30px;
-    font-size: 28px;
-    letter-spacing: 1px;
 }
 
-.login-container input {
+.form-box input{
     width: 100%;
-    padding: 15px 12px;
-    margin: 8px 0;
-    border-radius: 8px;
+    padding: 12px;
+    margin: 10px 0;
     border: 1px solid #ccc;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 6px;
+    font-size: 14px;
 }
 
-.login-container input:focus {
-    border-color: #357ABD;
-    box-shadow: 0 0 10px rgba(53, 122, 189, 0.5);
+.form-box input:focus{
     outline: none;
+    border-color: #357ABD;
 }
 
-.login-container button {
+.btn{
     width: 100%;
-    padding: 15px;
+    padding: 12px;
     margin-top: 15px;
     background-color: #357ABD;
-    color: #fff;
+    color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
+    border-radius: 6px;
+    font-size: 15px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background 0.3s ease;
 }
 
-.login-container button:hover {
-    background-color: #1a4782;
-    transform: translateY(-2px);
+.btn:hover{
+    background-color: #285f9e;
 }
