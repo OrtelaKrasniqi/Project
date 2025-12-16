@@ -166,4 +166,14 @@ nav a:hover {
     color: #ffeb3b;
 }
 
+body{ 
+    background-image: url(22.jpg);
+     background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
 
