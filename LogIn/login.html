@@ -49,4 +49,27 @@
   </div>
 </div>
 </body>
+<script>
+  const loginForm = document.getElementById('loginForm');
+        const emailInput = document.getElementById('emailInput');
+        const passwordInput = document.getElementById('passwordInput');
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            if(email === "" || password === "") {
+                alert("Ju lutem plotësoni të gjitha fushat.");
+                return;
+            }
+
+            if(email === "user@example.com" && password === "1234") {
+                window.location.href = "../Dashboard/index.html";
+            } else {
+                alert("Email ose password janë gabim.");
+            }
+        });
+</script>
 </html>
