@@ -53,8 +53,9 @@ body{
     border-radius: 6px;
     font-size: 15px;
     cursor: pointer;
-    transition: background 0.3s ease;
-    list-style: none;
+}
+.btn a{
+    text-decoration: none;
 }
 
 .btn:hover{
