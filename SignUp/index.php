@@ -1,3 +1,71 @@
+<?php
+session_start();
+
+class User {
+    private $db;
+
+    public function __construct($pdo) {
+        $this->db = $pdo;
+    }
+
+    public function exists($email) {
+        $stmt = $this->db->prepare("SELECT id FROM users WHERE email = :email");
+        $stmt->execute(['email' => $email]);
+        return $stmt->rowCount() > 0;
+    }
+
+    public function register($fullname, $email, $password, $role = 'user') {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $this->db->prepare("INSERT INTO users (fullname, email, password, role, created_at) VALUES (:fullname, :email, :password, :role, NOW())");
+        return $stmt->execute([
+            'fullname' => $fullname,
+            'email' => $email,
+            'password' => $hashedPassword,
+            'role' => $role
+        ]);
+    }
+}
+
+$message = "";
+
+$host = "localhost";
+$dbname = "college_project"; 
+$user = "root";
+$pass = "";
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $fullname = trim($_POST["fullname"] ?? "");
+    $email = trim($_POST["email"] ?? "");
+    $password = $_POST["password"] ?? "";
+    $confirm = $_POST["confirm-password"] ?? "";
+
+    $errors = [];
+
+    if(strlen($fullname) < 3) $errors[] = "Full name must be at least 3 characters.";
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Invalid email address.";
+    if(strlen($password) < 6) $errors[] = "Password must be at least 6 characters.";
+    if($password !== $confirm) $errors[] = "Passwords do not match.";
+
+    $userObj = new User($pdo);
+
+    if($userObj->exists($email)) $errors[] = "Email is already registered.";
+
+    if(empty($errors)) {
+        $userObj->register($fullname, $email, $password);
+        $message = "✅ Account created successfully!";
+    } else {
+        $message = implode("<br>", $errors);
+    }
+}
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
