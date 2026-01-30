@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <?php
 session_start();
 
@@ -57,57 +55,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $userObj = new User($pdo);
 
-    if($userObj->exists($email)) $errors[] = "Email is already registered.";
+    if (empty($errors)) {
+    $userObj->register($fullname, $email, $password);
 
-    if(empty($errors)) {
-        $userObj->register($fullname, $email, $password);
-        $message = "✅ Account created successfully!";
-    } else {
-        $message = implode("<br>", $errors);
-    }
+    
+    header("Location: ../LogIn/login.php");
+    exit(); 
+} else {
+    $message = implode("<br>", $errors);
+}
+
 }
 ?>
 
 
->>>>>>> dd2bd39003ac57ecc997fbcc765477ef2dcc614d
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up Page</title>
-<<<<<<< HEAD
-
-    
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="stylesheet" href="chat.css">
-    <script src="chat.js" defer></script>
-</head>
-
-<body>
-
-    
-    <nav>
-        <a href="../HomePage/index.php">Home</a>
-        <a href="../LogIn/login.php">Login</a>
-        <a href="../SignUp/index.php">Sign Up</a>
-    </nav>
-
-   
-    <main>
-        <div class="signup-container">
-            <h2>Create Account</h2>
-            <form action="#" method="post">
-=======
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="chat.css">
     <script src="chat.js" defer></script>
 </head>
 <body>
     <nav>
-        <a href="../HomePage/index.php">Home</a>
-        <a href="../LogIn/login.php">Login</a>
+        <a href="../HomePage/index.html">Home</a>
+        <a href="../LogIn/login.html">Login</a>
         <a href="../SignUp/index.php">Sign Up</a>
     </nav>
     <main>
@@ -117,25 +92,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <p style="color:red; font-weight:bold;"><?php echo $message; ?></p>
             <?php endif; ?>
             <form method="post">
->>>>>>> dd2bd39003ac57ecc997fbcc765477ef2dcc614d
                 <input type="text" name="fullname" placeholder="Full Name" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <input type="password" name="confirm-password" placeholder="Confirm Password" required>
-                <button type="submit">Sign Up</button>
+                <a href="../LogIn/login.php">
+    <button type="button">Go to Login</button>
+</a>
+
             </form>
         </div>
     </main>
-<<<<<<< HEAD
-
-   
     <div id="chatbox-container">
         <button id="chat-toggle-btn">💬</button>
-
-=======
-    <div id="chatbox-container">
-        <button id="chat-toggle-btn">💬</button>
->>>>>>> dd2bd39003ac57ecc997fbcc765477ef2dcc614d
         <div id="chatbox-panel">
             <div id="chatbox-header">
                 <h4>Chat</h4>
@@ -150,11 +119,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
 </body>
 </html>
-=======
-</body>
-</html>
->>>>>>> dd2bd39003ac57ecc997fbcc765477ef2dcc614d
