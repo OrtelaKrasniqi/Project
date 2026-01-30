@@ -19,7 +19,7 @@
     </div>
     <div class="slide">
       <h2>Sustain</h2>
-      <p>Protecting the environment for the future.</p>
+      <p>Protecting the environment.</p>
     </div>
   </div>
 
