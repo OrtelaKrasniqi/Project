@@ -12,7 +12,7 @@
     <section class="center-form">
         <form class="form-box">
             <h2>Log in</h2>
-           
+           <form method="post" action="process_login.php">
             <input type="email" placeholder="Email" required>
             <input type="password" placeholder="Password" required>
             <button type="submit" class="btn"><a href="../Dashboard/index.php"class="btn a">Log in</a></button>

@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['logged_in'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+<h1>Miresevini, <?php echo $_SESSION['username']; ?> 👋</h1>
+<a href="logout.php">Logout</a>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +30,7 @@
                     <span class="icons">upload</span>
                       <span class="icons">favorite</span>
                       <span class="icons">settings</span>
+                      <a href="../Dashboard/news.php"><span class="icons">news</span></a>
                      <a href="../HomePage/"><span class="icons">logout</span></a>
             </div>
 
