@@ -1,11 +1,8 @@
-<?php
-session_start();
-
 if (!isset($_SESSION['logged_in'])) {
-    header("Location: ../Dashboard/index.php");
+    header("Location: ../Auth/login.php");
     exit;
 }
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
