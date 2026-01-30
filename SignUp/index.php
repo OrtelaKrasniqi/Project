@@ -96,7 +96,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <input type="password" name="confirm-password" placeholder="Confirm Password" required>
-                <button type="submit">Sign Up</button>
+                <a href="../LogIn/login.php">
+    <button type="button">Go to Login</button>
+</a>
+
             </form>
         </div>
     </main>
