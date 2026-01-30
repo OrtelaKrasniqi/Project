@@ -1,7 +1,12 @@
+<?php
+session_start();
+
 if (!isset($_SESSION['logged_in'])) {
-    header("Location: ../Auth/login.php");
+    header("Location: ../LogIn/login.php");
     exit;
 }
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +21,11 @@ if (!isset($_SESSION['logged_in'])) {
  <link rel="stylesheet" href="footer.css">
 </head>
 <body>
+    <h1>Miresevini <?php echo $_SESSION['username']; ?> 👋</h1>
+    <a href="../LogIn/logout.php"><span class="icons">logout</span></a>
+
+
+
     <div class="dashboard">
         <div class="navbar">
             <img src="recycle.png" alt="" class="logo">

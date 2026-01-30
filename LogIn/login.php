@@ -12,10 +12,12 @@
     <section class="center-form">
         <form class="form-box">
             <h2>Log in</h2>
-           <form method="post" action="process_login.php">
-            <input type="email" placeholder="Email" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit" class="btn"><a href="../Dashboard/index.php"class="btn a">Log in</a></button>
+          <form method="POST" action="process_login.php">
+    <input type="email" name="username" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit" class="btn">Log In</button>
+</form>
+
         </form>
     </section>
 
