@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $news_list = [
     ["title" => "School Reopening!", "content" => "School will reopen on 1st February."],
@@ -7,23 +8,7 @@ $news_list = [
 
 
 $isAdmin = true; 
-
-foreach ($news_list as $news) {
-    echo '<div class="news-item">';
-    echo '<h2>' . htmlspecialchars($news['title']) . '</h2>';
-    echo '<p>' . htmlspecialchars($news['content']) . '</p>';
-
-    if ($isAdmin) {
-        echo '<div class="admin-controls">';
-        echo '<a href="#">Edit</a>';
-        echo '<a href="#">Delete</a>';
-        echo '</div>';
-    }
-
-    echo '</div>';
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +24,19 @@ foreach ($news_list as $news) {
 
     <main>
         <section id="news-list">
-            <?php include 'news.php'; ?>
+            <?php foreach ($news_list as $news): ?>
+                <div class="news-item">
+                    <h2><?php echo htmlspecialchars($news['title']); ?></h2>
+                    <p><?php echo htmlspecialchars($news['content']); ?></p>
+
+                    <?php if ($isAdmin): ?>
+                        <div class="admin-controls">
+                            <a href="#">Edit</a>
+                            <a href="#">Delete</a>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
         </section>
     </main>
 </body>
