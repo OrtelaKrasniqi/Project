@@ -1,15 +1,16 @@
 <?php
-require_once __DIR__ . '/../config/session.php';
-
 session_start();
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = $_POST['username'] ?? '';
+$password = $_POST['password'] ?? '';
 
-if ($username === "admin@hotmail.com" && $password === "12345") {
-    $_SESSION['user'] = $username;
+if ($username === "admin" && $password === "12345") {
+
+    $_SESSION['logged_in'] = true;
+    $_SESSION['username'] = $username;
 
     header("Location: ../Dashboard/index.php");
-} else {
-    echo "Login i pasakte!";
+    exit;
 }
+
+echo "Username ose password gabim!";
