@@ -15,7 +15,7 @@
            
             <input type="email" placeholder="Email" required>
             <input type="password" placeholder="Password" required>
-            <button type="submit" class="btn"><a href="../Dashboard/index.html"class="btn a">Log in</a></button>
+            <button type="submit" class="btn"><a href="../Dashboard/index.php"class="btn a">Log in</a></button>
         </form>
     </section>
 
@@ -42,25 +42,31 @@
 </body>
 <script>
   const loginForm = document.getElementById('loginForm');
-        const emailInput = document.getElementById('emailInput');
-        const passwordInput = document.getElementById('passwordInput');
+  const emailInput = document.getElementById('emailInput');
+  const passwordInput = document.getElementById('passwordInput');
 
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault(); 
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-            const email = emailInput.value.trim();
-            const password = passwordInput.value.trim();
+  loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-            if(email === "" || password === "") {
-                alert("Ju lutem plotësoni të gjitha fushat.");
-                return;
-            }
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
 
-            if(email === "user@example.com" && password === "1234") {
-                window.location.href = "../Dashboard/index.html";
-            } else {
-                alert("Email ose password janë gabim.");
-            }
-        });
+    if (email === "" || password === "") {
+      alert("Ju lutem plotësoni të gjitha fushat.");
+      return;
+    }
+
+    if (!passwordRegex.test(password)) {
+      alert("Password duhet të ketë min 8 karaktere, shkronjë të madhe, të vogël, numër dhe simbol.");
+      return;
+    }
+
+    
+    window.location.href = "../Dashboard/index.php";
+  });
 </script>
+
+
 </html>

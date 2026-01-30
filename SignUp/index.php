@@ -89,9 +89,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     
     <nav>
-        <a href="../HomePage/index.html">Home</a>
-        <a href="../LogIn/login.html">Login</a>
-        <a href="../SignUp/index.html">Sign Up</a>
+        <a href="../HomePage/index.php">Home</a>
+        <a href="../LogIn/login.php">Login</a>
+        <a href="../SignUp/index.php">Sign Up</a>
     </nav>
 
    
@@ -106,8 +106,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
     <nav>
-        <a href="../HomePage/index.html">Home</a>
-        <a href="../LogIn/login.html">Login</a>
+        <a href="../HomePage/index.php">Home</a>
+        <a href="../LogIn/login.php">Login</a>
         <a href="../SignUp/index.php">Sign Up</a>
     </nav>
     <main>
