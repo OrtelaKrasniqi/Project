@@ -54,11 +54,6 @@ body {
     padding: 10px 14px;
     border-radius: 8px;
     transition: background 0.3s;
-
-}
-.navbar .icons .logout{
-    list-style: none;
-
 }
 
 .navbar .icons:hover {
