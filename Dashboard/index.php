@@ -28,6 +28,8 @@ if (!isset($_SESSION['logged_in'])) {
                     <span class="icons">upload</span>
                       <span class="icons">favorite</span>
                       <span class="icons">settings</span>
+                      <a href="/news.php"><span class="icons">news</span></a>
+                      <a href="../Login/login.php"><span class="icons">logout</span></a>
             </div>
 
         </div>
