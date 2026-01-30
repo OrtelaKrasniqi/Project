@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../config/session.php';
+
 session_start();
 
 $username = $_POST['username'];
