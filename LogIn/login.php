@@ -10,17 +10,16 @@
 </head>
 <body>
     <section class="center-form">
-        <form class="form-box">
-            <h2>Log in</h2>
-          <form method="POST" action="process_login.php">
-    <input type="email" name="username" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button type="submit" class="btn">Log In</button>
-</form>
+    <form id="loginForm" class="form-box" method="POST" action="process_login.php">
+        <h2>Log in</h2>
+        <input type="email" id="emailInput" name="username" placeholder="Email" required>
+        <input type="password" id="passwordInput" name="password" placeholder="Password" required>
+        <button type="submit" class="btn">Log in</button>
+    </form>
+</section>
 
-        </form>
-    </section>
 
+  
     
     <div id="chatbox-container">
   
@@ -44,31 +43,23 @@
 </body>
 <script>
   const loginForm = document.getElementById('loginForm');
-  const emailInput = document.getElementById('emailInput');
-  const passwordInput = document.getElementById('passwordInput');
+const emailInput = document.getElementById('emailInput');
+const passwordInput = document.getElementById('passwordInput');
 
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-  loginForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const email = emailInput.value.trim();
+loginForm.addEventListener('submit', function(e) {
     const password = passwordInput.value.trim();
-
-    if (email === "" || password === "") {
-      alert("Ju lutem plotësoni të gjitha fushat.");
-      return;
-    }
-
     if (!passwordRegex.test(password)) {
-      alert("Password duhet të ketë min 8 karaktere, shkronjë të madhe, të vogël, numër dhe simbol.");
-      return;
+        e.preventDefault(); 
+        alert("Password duhet të ketë min 8 karaktere, shkronjë të madhe, të vogël, numër dhe simbol.");
     }
+});
 
-    
-    window.location.href = "../Dashboard/index.php";
-  });
+
 </script>
+
+
 
 
 </html>
