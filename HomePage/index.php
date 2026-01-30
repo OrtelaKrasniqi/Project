@@ -18,10 +18,10 @@
             <div class="menu">
                 <ul>
                     <li><a href="">Home</a></li>
-                    <li><a href="../About/index.html">About</a></li>
+                    <li><a href="../About/index.php">About</a></li>
                     <li><a href="">Contact</a></li>
-                    <li><a href="../LogIn/login.html">Login</a></li>
-                    <li><a href="../SignUp/index.html">Signup</a></li>
+                    <li><a href="../LogIn/login.php">Login</a></li>
+                    <li><a href="../SignUp/index.php">Signup</a></li>
                 </ul>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 and make their journey easier.
             </p>
             <br>
-            <button class="btn"><a href="../SignUp/index.html">Join us</a></button>
+            <button class="btn"><a href="../SignUp/index.php">Join us</a></button>
         </div>
     </div>
 
