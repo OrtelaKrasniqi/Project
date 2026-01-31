@@ -1,9 +1,10 @@
 <?php
-session_start();
+require_once '../classes/Authentication.php';
 
-if (!isset($_SESSION['logged_in'])) {
-    header("Location: ../LogIn/login.php");
+if (!Auth::isLoggedIn()) {
+    header("Location: ../login/login.php");
     exit;
+
 }
 ?>
 
@@ -21,8 +22,6 @@ if (!isset($_SESSION['logged_in'])) {
  <link rel="stylesheet" href="footer.css">
 </head>
 <body>
-    <h1>Miresevini <?php echo $_SESSION['username']; ?> 👋</h1>
-    <a href="../LogIn/logout.php"><span class="icons">logout</span></a>
 
 
 

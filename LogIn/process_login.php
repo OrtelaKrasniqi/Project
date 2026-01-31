@@ -1,12 +1,13 @@
 <?php
-session_start();
+
+require_once '../classes/Authentication.php';
 
 $username = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
 
-if ($username === "admin@hotmail.com" && $password === "Ortela123!") {
-    $_SESSION['logged_in'] = true;
-    $_SESSION['username'] = $username;
+$auth = new Auth($username, $password);
+
+if ($auth->login()) {
     header("Location: ../Dashboard/index.php");
     exit;
 }

@@ -1,6 +1,6 @@
 <?php
-session_start();
-session_destroy();
+require_once 'classes/Authentication.php';
 
+Auth::logout();
 header("Location: login.php");
 exit;
