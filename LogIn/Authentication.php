@@ -2,28 +2,40 @@
 
 class Authentication
 {
-    private string $username;
-    private string $password;
+    private PDO $pdo;
 
-    public function __construct(string $username, string $password)
+    public function __construct(PDO $pdo)
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
-        $this->username = $username;
-        $this->password = $password;
+        $this->pdo = $pdo;
     }
 
-    public function login(): bool
+    public function login(string $email, string $password): bool
     {
-        if ($this->username === "admin@hotmail.com" && $this->password === "Ortela123!") {
-            $_SESSION['logged_in'] = true;
-            $_SESSION['username'] = $this->username;
-            return true;
+        $sql = "SELECT id, name, email, password, role FROM users WHERE email = :email LIMIT 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['email' => $email]);
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$user) {
+            return false;
         }
 
-        return false;
+        if ($password !== $user['password']) {
+            return false;
+        }
+
+        $_SESSION['logged_in'] = true;
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['name'] = $user['name'];
+        $_SESSION['email'] = $user['email'];
+        $_SESSION['role'] = $user['role'];
+
+        return true;
     }
 
     public static function isLoggedIn(): bool
@@ -33,7 +45,9 @@ class Authentication
 
     public static function logout(): void
     {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         session_destroy();
     }
 }

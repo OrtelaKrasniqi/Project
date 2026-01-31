@@ -1,16 +1,18 @@
 <?php
 
-require_once '../classes/Authentication.php';
+require_once "db.php";
+require_once "classes/Authentication.php";
 
-$username = $_POST['username'] ?? '';
+$email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
 
-$auth = new Auth($username, $password);
+$auth = new Authentication($pdo);
 
-if ($auth->login()) {
-    header("Location: ../Dashboard/index.php");
+if ($auth->login($email, $password)) {
+    header("Location: Dashboard/index.php");
     exit;
 }
 
-header("Location: login.php");
+header("Location: login.php?error=1");
 exit;
+

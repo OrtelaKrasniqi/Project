@@ -1,12 +1,17 @@
 <?php
-require_once '../classes/Authentication.php';
+require_once "../classes/Authentication.php";
 
-if (!Auth::isLoggedIn()) {
-    header("Location: ../login/login.php");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!Authentication::isLoggedIn()) {
+    header("Location: ../login.php");
     exit;
-
 }
 ?>
+
+
 
 
 <!DOCTYPE html>
