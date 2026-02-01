@@ -1,5 +1,5 @@
 <?php
-$dsn = "mysql:host=localhost;dbname=shop;charset=utf8";
+$dsn = "mysql:host=localhost;dbname=techrec;charset=utf8";
 $username = "root";
 $password = "";
 
