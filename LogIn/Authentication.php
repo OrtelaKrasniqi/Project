@@ -29,7 +29,7 @@ class Authentication
             return false;
         }
 
-        if (!password_verify($password, $user['password'])) {
+        if ($password !== $user['password']) {
             return false;
         }
 
@@ -39,12 +39,11 @@ class Authentication
         $_SESSION['email']     = $user['email'];
         $_SESSION['role']      = $user['role'];
 
-       
         if ($remember) {
             setcookie("remember_email", $user['email'], [
-                "expires"  => time() + (7 * 24 * 60 * 60), 
+                "expires"  => time() + (7 * 24 * 60 * 60),
                 "path"     => "/",
-                "secure"   => false,  
+                "secure"   => false,
                 "httponly" => true,
                 "samesite" => "Lax"
             ]);
@@ -73,7 +72,6 @@ class Authentication
         session_unset();
         session_destroy();
 
-      
         self::deleteRememberCookie();
     }
 
