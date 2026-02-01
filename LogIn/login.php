@@ -12,10 +12,15 @@
 <body>
 
 <section class="center-form">
-    <form id="loginForm" class="form-box" method="POST" action="process_login.php">
+    <form id="loginForm" class="form-box" method="POST" action="process_login.php" novalidate>
         <h2>Log in</h2>
-        <input type="email" id="emailInput" name="email" placeholder="Email" required>
-        <input type="password" id="passwordInput" name="password" placeholder="Password" required>
+
+        <input type="email" id="emailInput" name="email" placeholder="Email">
+        <small id="emailError" style="color:red; display:block; margin-bottom:10px;"></small>
+
+        <input type="password" id="passwordInput" name="password" placeholder="Password">
+        <small id="passwordError" style="color:red; display:block; margin-bottom:10px;"></small>
+
         <button type="submit" class="btn">Log in</button>
     </form>
 </section>
@@ -39,20 +44,40 @@
 </div>
 
 <script>
-const loginForm = document.getElementById('loginForm');
-const passwordInput = document.getElementById('passwordInput');
+const loginForm = document.getElementById("loginForm");
+const emailInput = document.getElementById("emailInput");
+const passwordInput = document.getElementById("passwordInput");
 
-const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const emailError = document.getElementById("emailError");
+const passwordError = document.getElementById("passwordError");
 
-loginForm.addEventListener('submit', function(e) {
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+loginForm.addEventListener("submit", function (e) {
+    emailError.textContent = "";
+    passwordError.textContent = "";
+
+    let valid = true;
+
+    const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
-    if (!passwordRegex.test(password)) {
-        e.preventDefault();
-        alert("Password duhet të ketë min 8 karaktere, shkronjë të madhe, të vogël, numër dhe simbol.");
+
+    if (email === "") {
+        emailError.textContent = "Email është i detyrueshëm.";
+        valid = false;
+    } else if (!emailRegex.test(email)) {
+        emailError.textContent = "Email nuk është valid.";
+        valid = false;
     }
+
+    if (password === "") {
+        passwordError.textContent = "Password është i detyrueshëm.";
+        valid = false;
+    }
+
+    if (!valid) e.preventDefault();
 });
 </script>
 
 </body>
 </html>
-

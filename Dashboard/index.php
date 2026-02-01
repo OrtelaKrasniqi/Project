@@ -1,18 +1,11 @@
 <?php
-require_once "../Authentication.php";
-require_once "../db.php";
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once "../LogIn/db.php";
+require_once "../LogIn/Authentication.php";
 
 if (!Authentication::isLoggedIn()) {
-    header("Location: ../login.php");
+    header("Location: ../LogIn/login.php");
     exit;
 }
-
-$stmt = $pdo->query("SELECT id, name FROM categories ORDER BY name ASC");
-$categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +34,8 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <span class="icons">favorite</span>
             <span class="icons">settings</span>
             <a href="../news/news.php"><span class="icons">news</span></a>
-            <a href="../logout.php"><span class="icons">logout</span></a>
+            <a href="../LogIn/logout.php"><span class="icons">logout</span></a>
+
         </div>
     </div>
 

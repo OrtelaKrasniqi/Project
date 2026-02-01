@@ -2,8 +2,8 @@
 
 $host = "localhost";
 $user = "root";
-$pass = "";        
-$dbname = "TechRec";
+$pass = "";
+$dbname = "techrec";
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $pass);
