@@ -13,7 +13,7 @@ class Authentication
         $this->pdo = $pdo;
     }
 
-    public function login(string $email, string $password): bool
+    public function login(string $email, string $password, bool $remember = false): bool
     {
         $sql = "SELECT id, name, email, password, role
                 FROM users
@@ -29,7 +29,7 @@ class Authentication
             return false;
         }
 
-        if ($password !== $user['password']) {
+        if (!password_verify($password, $user['password'])) {
             return false;
         }
 
@@ -38,6 +38,19 @@ class Authentication
         $_SESSION['name']      = $user['name'];
         $_SESSION['email']     = $user['email'];
         $_SESSION['role']      = $user['role'];
+
+       
+        if ($remember) {
+            setcookie("remember_email", $user['email'], [
+                "expires"  => time() + (7 * 24 * 60 * 60), 
+                "path"     => "/",
+                "secure"   => false,  
+                "httponly" => true,
+                "samesite" => "Lax"
+            ]);
+        } else {
+            self::deleteRememberCookie();
+        }
 
         return true;
     }
@@ -59,6 +72,9 @@ class Authentication
 
         session_unset();
         session_destroy();
+
+      
+        self::deleteRememberCookie();
     }
 
     public static function user(): ?array
@@ -73,5 +89,20 @@ class Authentication
             'email' => $_SESSION['email'],
             'role'  => $_SESSION['role'],
         ];
+    }
+
+    public static function rememberEmail(): string
+    {
+        return $_COOKIE["remember_email"] ?? "";
+    }
+
+    private static function deleteRememberCookie(): void
+    {
+        setcookie("remember_email", "", [
+            "expires" => time() - 3600,
+            "path"    => "/"
+        ]);
+
+        unset($_COOKIE["remember_email"]);
     }
 }
