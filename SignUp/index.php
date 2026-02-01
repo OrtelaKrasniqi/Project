@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 session_start();
 
 class User {
@@ -50,74 +53,54 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if(strlen($fullname) < 3) $errors[] = "Full name must be at least 3 characters.";
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Invalid email address.";
-    if(strlen($password) < 6) $errors[] = "Password must be at least 6 characters.";
+
+    $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
+    if (!preg_match($pattern, $password)) $errors[] = "Password duhet të ketë min 8 karaktere, shkronjë të madhe, të vogël, numër dhe simbol.";
+
     if($password !== $confirm) $errors[] = "Passwords do not match.";
 
     $userObj = new User($pdo);
 
-    if (empty($errors)) {
-    $userObj->register($fullname, $email, $password);
+    if($userObj->exists($email)) $errors[] = "Email already registered.";
 
-    
-    header("Location: ../LogIn/login.php");
-    exit(); 
-} else {
-    $message = implode("<br>", $errors);
-}
-
+    if (!empty($errors)) {
+        $message = implode("<br>", $errors);
+    } else {
+        $userObj->register($fullname, $email, $password);
+        header("Location: ../LogIn/login.php");
+        exit();
+    }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up Page</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="chat.css">
-    <script src="chat.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up Page</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <a href="../HomePage/index.html">Home</a>
-        <a href="../LogIn/login.html">Login</a>
-        <a href="../SignUp/index.php">Sign Up</a>
-    </nav>
-    <main>
-        <div class="signup-container">
-            <h2>Create Account</h2>
-            <?php if(!empty($message)): ?>
-                <p style="color:red; font-weight:bold;"><?php echo $message; ?></p>
-            <?php endif; ?>
-            <form method="post">
-                <input type="text" name="fullname" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <input type="password" name="confirm-password" placeholder="Confirm Password" required>
-                <a href="../LogIn/login.php">
-    <button type="button">Go to Login</button>
-</a>
-
-            </form>
-        </div>
-    </main>
-    <div id="chatbox-container">
-        <button id="chat-toggle-btn">💬</button>
-        <div id="chatbox-panel">
-            <div id="chatbox-header">
-                <h4>Chat</h4>
-                <button id="chat-close-btn">×</button>
-            </div>
-            <div id="chatbox-messages">
-                <p>Welcome! How can I help you?</p>
-            </div>
-            <div id="chatbox-input">
-                <input type="text" placeholder="Type a message...">
-                <button id="send-btn">Send</button>
-            </div>
-        </div>
+<nav>
+    <a href="../HomePage/index.html">Home</a>
+    <a href="../LogIn/login.html">Login</a>
+    <a href="../SignUp/index.php">Sign Up</a>
+</nav>
+<main>
+    <div class="signup-container">
+        <h2>Create Account</h2>
+        <?php if(!empty($message)): ?>
+            <p style="color:red; font-weight:bold;"><?php echo $message; ?></p>
+        <?php endif; ?>
+        <form method="post">
+            <input type="text" name="fullname" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm-password" placeholder="Confirm Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
     </div>
+</main>
 </body>
 </html>
